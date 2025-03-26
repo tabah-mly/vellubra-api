@@ -5,6 +5,7 @@ from datetime import datetime, timezone
 
 class Note(SQLModel, table=True):
     id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True)
+    user_id: uuid.UUID = Field(foreign_key="user.id")
     title: str = Field(index=True)
     content: str | None = None
     tags: str | None = None
